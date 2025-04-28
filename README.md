@@ -6,6 +6,8 @@ A scalable comments application built with React, TypeScript, and NestJS, offeri
 
 **Live link**: https://treecomments.netlify.app/
 
+**Note:** The backend runs on Render's free tier, which sleeps after 15 minutes of inactivity. If the application seems unresponsive at first, please allow up to 50 seconds for the server to wake up on your first request.
+
 ## Development Setup Instructions
 
 ### Environment Configuration
