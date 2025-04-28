@@ -1,0 +1,12 @@
+name: Ping Server
+
+on:
+  schedule:
+    - cron: '*/14 * * * *'  # Run every 14 minutes
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping server
+        run: curl -s https://comments-app-backend-yltg.onrender.com > /dev/null
