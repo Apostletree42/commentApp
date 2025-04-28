@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Ping server
-        run: curl -s https://your-render-app-url.com > /dev/null
+        run: curl -s https://comments-app-backend-yltg.onrender.com > /dev/null
         # Add some output to confirm it ran
       - name: Log success
         run: echo "Server pinged successfully at $(date)"
