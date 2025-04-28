@@ -14,6 +14,7 @@ async function bootstrap() {
         'http://localhost:5173',
         'http://localhost',
         'http://localhost:80',
+        'https://treecomments.netlify.app',
       ],
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
       credentials: true,
