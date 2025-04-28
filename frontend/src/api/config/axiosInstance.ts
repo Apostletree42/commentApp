@@ -1,6 +1,6 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
-const API_URL = '/api';  // This will route through Nginx to the backend
+const API_URL = import.meta.env.VITE_API_URL || '/api';
 
 export interface ApiError {
   message: string;

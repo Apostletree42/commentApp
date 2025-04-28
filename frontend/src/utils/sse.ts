@@ -24,10 +24,10 @@ export class NotificationSSE {
             this.isConnecting = false;
             return;
         }
-
+        const sseUrl = import.meta.env.VITE_SSE_URL || 'http://localhost:3000/sse';
         try {
             this.eventSource = new EventSource(
-                `http://localhost:3000/sse/notifications?token=${token}`,
+                `${sseUrl}/notifications?token=${token}`,
                 { withCredentials: true }
             );
 
