@@ -2,30 +2,22 @@
 
 A scalable comments application built with React, TypeScript, and NestJS, offering features like nested comments, real-time notifications, and secure user authentication.
 
-## Setup Instructions
+## Live Demo
 
-### Prerequisites
+**Live link*: https://treecomments.netlify.app/
 
-- Docker and Docker Compose
-- Git
+## Development Setup Instructions
 
-### Frontend Setup
+### Environment Configuration
 
-1. **Clone the repository**:
+1. **Create environment file**:
    ```bash
-   git clone <repository-url>
-   cd <repository-directory>
+   cd backend
+   cp .env.example .env
+   # Edit the .env file with appropriate values
    ```
 
-2. **Start the containers**:
-   ```bash
-   docker-compose up -d
-   ```
-
-3. **Access the app**:  
-   Open your browser and go to `http://localhost:80`.
-
-### Backend Setup
+### Local Setup 
 
 1. **Clone the repository** (if not already done):
    ```bash
@@ -52,3 +44,45 @@ A scalable comments application built with React, TypeScript, and NestJS, offeri
 Once the services are up, the app should be running on `http://localhost:80`.
 
 ---
+
+## Production Setup Instructions
+
+**Note:** Before proceeding with production deployment, ensure that:
+- Database is already set up and configured
+- Required `.env` file is placed in the backend directory with production credentials
+- Server has Docker and Docker Compose installed
+
+### Production Deployment
+
+1. **Clone the repository**:
+   ```bash
+   git clone <repository-url>
+   cd <repository-directory>
+   ```
+
+2. **Configure environment variables**:
+   ```bash
+   cd backend
+   cp .env.example .env
+   # Edit the .env file with production configurations
+   ```
+
+3. **Build the production containers**:
+   ```bash
+   docker-compose -f docker-compose.prod.yml build
+   ```
+
+4. **Start the production services**:
+   ```bash
+   docker-compose -f docker-compose.prod.yml up -d
+   ```
+
+5. **Verify deployment**:
+   ```bash
+   docker-compose -f docker-compose.prod.yml ps
+   ```
+
+6. **Access the production application**:
+   Your application should be accessible on port 80 of your server.
+
+学习需要耐心和毅力。(Xuéxí xūyào nàixīn hé yìlì.) Learning requires patience and perseverance.
