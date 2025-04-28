@@ -5,17 +5,15 @@ import { PostgreSqlDriver } from '@mikro-orm/postgresql';
 const config: Options<PostgreSqlDriver> = {
   driver: PostgreSqlDriver,
   entities: ['./dist/src/modules/**/*.entity.js'],
-  
-  // Use DATABASE_URL in production
+
   clientUrl: process.env.DATABASE_URL,
-  
-  // Fallback to individual parameters if no DATABASE_URL is provided
+
   dbName: process.env.DATABASE_NAME || 'comments',
   host: process.env.DATABASE_HOST || 'localhost',
   port: Number(process.env.DATABASE_PORT) || 5432,
   user: process.env.DATABASE_USER || 'postgres',
   password: process.env.DATABASE_PASSWORD || 'postgres',
-  
+
   migrations: {
     path: './src/migrations',
     tableName: 'migrations',
@@ -30,10 +28,13 @@ const config: Options<PostgreSqlDriver> = {
   },
   driverOptions: {
     connection: {
-      ssl: process.env.NODE_ENV === 'production' ? {
-        rejectUnauthorized: false
-      } : false
-    }
+      ssl:
+        process.env.NODE_ENV === 'production'
+          ? {
+              rejectUnauthorized: false,
+            }
+          : false,
+    },
   },
 };
 
