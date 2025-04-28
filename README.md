@@ -4,7 +4,7 @@ A scalable comments application built with React, TypeScript, and NestJS, offeri
 
 ## Live Demo
 
-**Live link*: https://treecomments.netlify.app/
+**Live link**: https://treecomments.netlify.app/
 
 ## Development Setup Instructions
 
