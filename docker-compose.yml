@@ -4,31 +4,64 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
-    container_name: comments-backend
+      dockerfile: Dockerfile.dev
+    container_name: comments-backend-dev
     restart: unless-stopped
     environment:
-      - .env
+      - NODE_ENV=development
+      - DATABASE_HOST=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_NAME=comments
+      - JWT_SECRET=dev_secret
+      - JWT_EXPIRATION=24h
+      - PORT=3000
     ports:
       - "3000:3000"
     volumes:
-      - ./backend/logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
     networks:
       - app-network
+    depends_on:
+      - postgres
 
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
-    container_name: comments-frontend
+      dockerfile: Dockerfile.dev 
+    container_name: comments-frontend-dev
     restart: unless-stopped
     depends_on:
       - backend
     ports:
       - "80:80"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - app-network
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: comments-postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=comments
+    ports:
+      - "5432:5432" 
+    volumes:
+      - postgres-dev-data:/var/lib/postgresql/data
     networks:
       - app-network
 
 networks:
   app-network:
     driver: bridge
+
+volumes:
+  postgres-dev-data:
+    driver: local
